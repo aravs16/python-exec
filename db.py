@@ -6,3 +6,4 @@ c.execute('''CREATE TABLE todos
              (todo text)''')
 conn.commit()
 conn.close()
+
