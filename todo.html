@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            console.log("Page is ready");
+
+            $('#mybutton1').click(function () {
+
+                $.get("http://localhost:1307/", function (data) {
+                    $('#myh1').html("Data from server:" + data);
+                });
+
+                // var name = $('#myinput').val();
+
+                // 
+
+            });
+
+        });
+
+
+    </script>
+
+</head>
+
+<body>
+
+    Please enter your name: <input id="myinput" type="text" />
+
+    <button id="mybutton1">Click Here</button>
+    <br><br>
+    <h2 id="myh1"></h2>
+
+</body>
+
+</html>

@@ -15,4 +15,7 @@ class Bank:
     def deposit(self,amount):
         self.balance = self.balance + amount
 
+    def welcome(self):
+        print("Welcome to the bank")
+
     

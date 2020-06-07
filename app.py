@@ -4,21 +4,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello():
-    return "Hello World!"
+    return "Hello Iam app 1"
 
-@app.route('/createdb/<dbname>')
-def create(dbname):
-    #create db
-    return "Hello "+name
-
-@app.route('/insert/<todo>')
-def insert(todo):
-    # insert todo
-    return "Hello "+name
-
-@app.route('/getalltodos')
-def getalltodos():
-    # get todos
-    return "Hello "+name
-
-app.run()
+app.run(port="1306")
