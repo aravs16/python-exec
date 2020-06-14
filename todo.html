@@ -11,18 +11,32 @@
 
         $(document).ready(function () {
 
-            console.log("Page is ready");
+            var get_todos = function () {
 
-            $('#mybutton1').click(function () {
+                $('#todos').html("");
 
-                $.get("http://localhost:1307/", function (data) {
-                    $('#myh1').html("Data from server:" + data);
+                $.get("http://127.0.0.1:1309/gettodos/", function (data) {
+                    var data_json = JSON.parse(data);
+                    var i;
+                    for (i = 0; i < data_json.length; i++) {
+
+                        $('#todos').append("<div>" + data_json[i] + "</div>");
+
+                    }
                 });
 
-                // var name = $('#myinput').val();
+            };
 
-                // 
+            get_todos();
 
+            $('#add_todo').click(function () {
+
+                var user_todo = prompt("Please enter a todo");
+                $.get("http://127.0.0.1:1309/addtodo/" + user_todo, function (data) {
+
+                    get_todos();
+
+                });
             });
 
         });
@@ -32,13 +46,19 @@
 
 </head>
 
-<body>
+<body style="padding:0px">
 
-    Please enter your name: <input id="myinput" type="text" />
+    <div id="header" style="width:95%;background:black;color:white;padding:20px">
 
-    <button id="mybutton1">Click Here</button>
-    <br><br>
-    <h2 id="myh1"></h2>
+        My Todos
+
+    </div>
+
+    <div id="todos">
+
+    </div>
+    <br>
+    <button id="add_todo">Add Todo</button>
 
 </body>
 
