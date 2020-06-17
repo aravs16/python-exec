@@ -30,7 +30,7 @@ def gettodos():
     todos = c.fetchall()
     todo_array = []
     for t in todos:
-        todo_array.append(t[1])
+        todo_array.append(t)
     return json.dumps(todo_array)
 
 app.run(port="1309")

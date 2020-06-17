@@ -9,7 +9,23 @@
 
     <script type="text/javascript">
 
+    
+
         $(document).ready(function () {
+
+            var delete_selected_todo = function(id){
+
+                // alert("Deleting Selected Todo with rowid:"+id);
+
+                // $.get("http://127.0.0.1:1309/deletetodos/"+id, function (data) {
+                    
+                // });
+            };
+
+            $('#todos').on('click','.del_btn', function(event){
+             var id = $(this).attr('id');
+             delete_selected_todo(id);
+            });
 
             var get_todos = function () {
 
@@ -17,10 +33,11 @@
 
                 $.get("http://127.0.0.1:1309/gettodos/", function (data) {
                     var data_json = JSON.parse(data);
+                    console.log(data_json);
                     var i;
                     for (i = 0; i < data_json.length; i++) {
 
-                        $('#todos').append("<div>" + data_json[i] + "</div>");
+                        $('#todos').append("<div>" + data_json[i] + "<button class='del_btn' id='"+data_json[i][0]+"'>X</button></div>");
 
                     }
                 });
